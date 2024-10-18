@@ -1,25 +1,31 @@
 import { Injectable } from '@nestjs/common';
 import { VacancyDto } from './dto/vacancy.dto';
+import { Vacancy } from './entities/vacancy.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class VacancyService {
+  constructor(
+    @InjectRepository(Vacancy) private vacancyRepository: Repository<Vacancy>,
+  ) {}
   create(createVacancyDto: VacancyDto) {
-    return 'This action adds a new vacancy';
+    return this.vacancyRepository.create(createVacancyDto);
   }
 
   findAll() {
-    return `This action returns all vacancy`;
+    return this.vacancyRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} vacancy`;
+    return this.vacancyRepository.findOne({ where: { id } });
   }
 
   update(id: number, updateVacancyDto: VacancyDto) {
-    return `This action updates a #${id} vacancy`;
+    return this.vacancyRepository.update(id, updateVacancyDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} vacancy`;
+    return this.vacancyRepository.delete(id);
   }
 }
