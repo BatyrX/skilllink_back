@@ -44,7 +44,4 @@ export class User {
   @ManyToMany(() => Skill)
   @JoinTable()
   skills: Skill[];
-
-  @OneToMany(() => Vacancy, (vacancy) => vacancy.author)
-  vacancies: Vacancy[];
 }

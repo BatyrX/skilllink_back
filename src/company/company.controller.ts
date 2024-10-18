@@ -11,7 +11,7 @@ import { CompanyService } from './company.service';
 import { ApiTags } from '@nestjs/swagger';
 import { CompanyDto } from './dto/company.dto';
 
-@ApiTags('company')
+@ApiTags('Company')
 @Controller('company')
 export class CompanyController {
   constructor(private readonly companyService: CompanyService) {}
