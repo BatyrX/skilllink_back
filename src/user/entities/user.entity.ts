@@ -1,0 +1,45 @@
+import { Skill } from 'src/skills/entities/skill.entity';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  firstName: string;
+
+  @Column()
+  lastName: string;
+
+  @Column()
+  role: number;
+
+  @Column()
+  telegramId: number;
+
+  @Column()
+  telegramUsername: string;
+
+  @Column()
+  dateOfBirth: Date;
+
+  @Column()
+  gender: number;
+
+  @Column()
+  photoUrl: string;
+
+  @Column()
+  resumeUrl: string;
+
+  @ManyToMany(() => Skill)
+  @JoinTable()
+  skills: Skill[];
+}
