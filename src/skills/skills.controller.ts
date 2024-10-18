@@ -18,6 +18,7 @@ export class SkillsController {
 
   @Post()
   create(@Body() createSkillDto: SkillDto) {
+    console.log(createSkillDto);
     return this.skillsService.create(createSkillDto);
   }
 

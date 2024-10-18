@@ -9,8 +9,10 @@ export class SkillsService {
   constructor(
     @InjectRepository(Skill) private skillRepository: Repository<Skill>,
   ) {}
-  create(createSkillDto: SkillDto) {
-    return this.skillRepository.create(createSkillDto);
+  async create(createSkillDto: SkillDto) {
+    const skill = this.skillRepository.create({ name: createSkillDto.name });
+
+    return await this.skillRepository.save(skill);
   }
 
   findAll() {

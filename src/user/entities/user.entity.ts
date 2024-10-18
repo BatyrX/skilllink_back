@@ -41,7 +41,7 @@ export class User {
   @Column()
   resumeUrl: string;
 
-  @ManyToMany(() => Skill)
-  @JoinTable()
+  @ManyToMany(() => Skill, (skill) => skill.users)
+  @JoinTable() // Промежуточная таблица для связи
   skills: Skill[];
 }

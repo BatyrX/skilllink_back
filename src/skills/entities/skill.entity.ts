@@ -4,6 +4,7 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -15,6 +16,6 @@ export class Skill {
   @Column()
   name: string;
 
-  @ManyToMany(() => User)
+  @ManyToMany(() => User, (user) => user.skills)
   users: User[];
 }
