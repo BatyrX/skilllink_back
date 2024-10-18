@@ -1,3 +1,42 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Company } from 'src/company/entities/company.entity';
+import { Skill } from 'src/skills/entities/skill.entity';
+import { User } from 'src/user/entities/user.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
-export class Vacancy {}
+@Entity()
+export class Vacancy {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;
+
+  @Column()
+  description: string;
+
+  @ManyToOne(() => Company)
+  @JoinColumn()
+  company: Company;
+
+  @Column()
+  releasedData: Date;
+
+  @Column()
+  skills: Skill[];
+
+  @Column()
+  city: string;
+
+  @Column()
+  location: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn()
+  author: User;
+}

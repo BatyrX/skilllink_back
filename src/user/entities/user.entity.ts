@@ -1,9 +1,11 @@
 import { Skill } from 'src/skills/entities/skill.entity';
+import { Vacancy } from 'src/vacancy/entities/vacancy.entity';
 import {
   Column,
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -42,4 +44,7 @@ export class User {
   @ManyToMany(() => Skill)
   @JoinTable()
   skills: Skill[];
+
+  @OneToMany(() => Vacancy, (vacancy) => vacancy.author)
+  vacancies: Vacancy[];
 }
