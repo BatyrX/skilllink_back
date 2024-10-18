@@ -8,6 +8,8 @@ import { User } from './user/entities/user.entity';
 import { Skill } from './skills/entities/skill.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CompanyModule } from './company/company.module';
+import { TelegramModule } from './telegram/telegram.module';
+import { AiModule } from './ai/ai.module';
 
 @Module({
   imports: [
@@ -21,6 +23,8 @@ import { CompanyModule } from './company/company.module';
     UserModule,
     SkillsModule,
     CompanyModule,
+    TelegramModule,
+    AiModule,
   ],
   controllers: [AppController],
   providers: [AppService],
