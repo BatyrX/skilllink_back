@@ -1,22 +1,25 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { SkillDto } from 'src/skills/dto/skill.dto';
 
 export class UserDto {
   @ApiProperty()
-  firstName: string;
+  firstName: string | null;
   @ApiProperty()
-  lastName: string;
+  lastName: string | null;
   @ApiProperty()
-  role: number;
+  role: number | null;
   @ApiProperty()
   telegramId: number;
   @ApiProperty()
-  telegramUsername: string;
+  telegramUsername: string | null;
   @ApiProperty()
-  dateOfBirth: Date;
+  dateOfBirth: Date | null;
   @ApiProperty()
   gender: number;
   @ApiProperty()
-  photoUrl: string;
+  photoUrl: string | null;
   @ApiProperty()
-  resumeUrl: string;
+  resumeUrl: string | null;
+  @ApiProperty()
+  skills: SkillDto[];
 }

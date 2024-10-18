@@ -14,34 +14,34 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  firstName: string;
+  @Column({ nullable: true })
+  firstName: string | null;
 
-  @Column()
-  lastName: string;
+  @Column({ nullable: true })
+  lastName: string | null;
 
-  @Column()
+  @Column({ default: 0 })
   role: number;
 
   @Column()
   telegramId: number;
 
-  @Column()
-  telegramUsername: string;
+  @Column({ nullable: true })
+  telegramUsername: string | null;
 
-  @Column()
-  dateOfBirth: Date;
+  @Column({ nullable: true })
+  dateOfBirth: Date | null;
 
   @Column()
   gender: number;
 
-  @Column()
-  photoUrl: string;
+  @Column({ nullable: true })
+  photoUrl: string | null;
 
-  @Column()
-  resumeUrl: string;
+  @Column({ nullable: true })
+  resumeUrl: string | null;
 
   @ManyToMany(() => Skill, (skill) => skill.users)
-  @JoinTable() // Промежуточная таблица для связи
+  @JoinTable()
   skills: Skill[];
 }
