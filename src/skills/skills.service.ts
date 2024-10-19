@@ -10,10 +10,15 @@ export class SkillsService {
     @InjectRepository(Skill) private skillRepository: Repository<Skill>,
   ) {}
   async create(createSkillDto: SkillDto) {
-    this.skillRepository.findOne({});
-    const skill = this.skillRepository.create({ name: createSkillDto.name });
+    const skill = await this.skillRepository.findOne({
+      where: { name: createSkillDto.name },
+    });
 
-    return await this.skillRepository.save(skill);
+    if (skill) return skill;
+
+    const newSkill = this.skillRepository.create({ name: createSkillDto.name });
+
+    return await this.skillRepository.save(newSkill);
   }
 
   findAll() {
