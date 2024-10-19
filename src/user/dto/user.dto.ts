@@ -21,5 +21,5 @@ export class UserDto {
   @ApiProperty()
   resumeUrl: string | null;
   @ApiProperty()
-  skills: SkillDto[];
+  skills: string[];
 }
