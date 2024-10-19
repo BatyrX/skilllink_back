@@ -16,7 +16,7 @@ import { AiModule } from './ai/ai.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'data/database.sqlite', // путь к файлу базы данных SQLite
-      entities: [User, Skill], // массив сущностей
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // синхронизирует базу данных с моделями (только для разработки)
     }),
     VacancyModule,

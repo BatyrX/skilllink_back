@@ -5,6 +5,8 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -27,7 +29,8 @@ export class Vacancy {
   @Column()
   releasedData: Date;
 
-  @Column()
+  @ManyToMany(() => Skill)
+  @JoinTable()
   skills: Skill[];
 
   @Column()
