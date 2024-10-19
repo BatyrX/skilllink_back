@@ -12,7 +12,7 @@ export class AiService {
     @InjectRepository(User)
     private userRepository: Repository<User>,
   ) {
-    this.genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+    this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
   }
 
   async getJobRecommendationsForUser(userId: number) {
@@ -26,11 +26,11 @@ export class AiService {
     }
 
     const skills = user.skills.map((skill) => skill.name);
-
+    console.log(skills);
     const prompt = `Посоветуйте вакансии для человека с навыками: ${skills.join(
       ', ',
     )}.`;
-
+    console.log(prompt);
     const model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     try {
