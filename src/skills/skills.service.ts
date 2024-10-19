@@ -10,6 +10,7 @@ export class SkillsService {
     @InjectRepository(Skill) private skillRepository: Repository<Skill>,
   ) {}
   async create(createSkillDto: SkillDto) {
+    this.skillRepository.findOne({});
     const skill = this.skillRepository.create({ name: createSkillDto.name });
 
     return await this.skillRepository.save(skill);

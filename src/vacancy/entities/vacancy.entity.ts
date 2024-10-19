@@ -26,7 +26,7 @@ export class Vacancy {
   @JoinColumn()
   company: Company;
 
-  @Column()
+  @Column({ default: () => 'CURRENT_TIMESTAMP' })
   releasedData: Date;
 
   @ManyToMany(() => Skill)
